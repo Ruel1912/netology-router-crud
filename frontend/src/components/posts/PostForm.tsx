@@ -8,7 +8,7 @@ const PostForm = ({ onSubmit, formType, post }: PostFormProps) => {
 
     const formData = new FormData(event.target as HTMLFormElement)
     const postData = Object.fromEntries(formData.entries()) as unknown as IPost
-    onSubmit({ ...postData, created: Date.now() })
+    onSubmit({ ...postData })
   }
 
   return (

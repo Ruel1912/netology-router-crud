@@ -27,11 +27,6 @@ const PostView = () => {
     }
   }
 
-  const fetchPost = async () => {
-    const { post } = await getPost(postId)
-    setPost(post)
-  }
-
   const onDelete = async (id: number) => {
     await deletePost(id)
     navigate(routeList.root)
@@ -43,8 +38,13 @@ const PostView = () => {
   }
 
   useEffect(() => {
+    const fetchPost = async () => {
+      const { post } = await getPost(postId)
+      setPost(post)
+    }
+
     fetchPost()
-  }, [])
+  }, [postId])
 
   if (!post) return null
 
